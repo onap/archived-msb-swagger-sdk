@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2017 Huawei Technologies Co., Ltd. and others.  All rights reserved.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+
+
+    <!--<context:property-placeholder location="classpath:swagger.properties"
+        order="0" ignore-unresolvable="true" ignoreResourceNotFound="true" /> -->
+
+    <bean id="swaggerproperties"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:swagger.properties" />
+        <property name="order" value="0" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="ignoreResourceNotFound" value="true" />
+    </bean>
+
+    <!-- Swagger writers -->
+    <bean id="swaggerWriter" class="io.swagger.jaxrs.listing.SwaggerSerializers" />
+
+    <!-- Swagger API listing resource -->
+    <bean id="swaggerResource" class="io.swagger.jaxrs.listing.ApiListingResource" />
+
+
+    <!-- this scans the classes for resources -->
+    <bean id="swaggerConfig" class="io.swagger.jaxrs.config.BeanConfig">
+        <property name="version" value="${api-version}" />
+        <property name="title" value="${api-title}" />
+        <property name="description" value="${api-description}" />
+        <property name="host" value="${api-host-ip}:${api-host-port}" />
+        <property name="basePath" value="${api-base-path}" />
+        <property name="resourcePackage" value="${api-rest-package}" />
+        <property name="scan" value="${api-rest-package-scan}" />
+    </bean>
+
+    <bean class="org.onap.swagger.bean.BeanConfigPostProcessor" />
+
+    <bean id="sRoa" class="org.onap.swagger.service.rest.SwaggerRoa" />
+
+    <jaxrs:server id="api-doc" address="${api-swagger-uri}">
+        <jaxrs:serviceBeans>
+            <ref bean="sRoa" />
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+
+<!-- TODO (mrkanag) : Remove below settings to redirect from /${api-swagger-uri} and if service already
+     having static swagger.json, then it will be used otherwise this bean will be used to generate
+     and respond to user request-->
+    <jaxrs:server id="swagger" address="${api-swagger-uri}/api-doc">
+        <jaxrs:serviceBeans>
+            <ref bean="swaggerResource" />
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="swaggerWriter" />
+        </jaxrs:providers>
+    </jaxrs:server>
+
+
+</beans>
