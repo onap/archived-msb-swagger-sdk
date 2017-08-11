@@ -1,0 +1,8 @@
+bin/
+target/
+coverage-report/
+.project
+.settings
+.classpath
+.class
+.checkstyle
