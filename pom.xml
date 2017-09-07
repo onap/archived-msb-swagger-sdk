@@ -30,7 +30,15 @@
     <packaging>jar</packaging>
 
     <name>swagger-sdk</name>
-
+    <properties>
+      <onap.nexus.javadocs-url>dav:https://nexus.onap.org/content/sites/site/org/onap/msb/swagger-sdk/${project.version}</onap.nexus.javadocs-url>
+    </properties>
+    <distributionManagement>
+      <site>
+        <id>ecomp-site</id>
+        <url>${onap.nexus.javadocs-url}</url>
+      </site>
+    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>io.swagger</groupId>
