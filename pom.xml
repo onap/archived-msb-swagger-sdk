@@ -29,7 +29,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>swagger-sdk</name>
+    <name>msb-swagger-sdk</name>
     <properties>
       <onap.nexus.javadocs-url>dav:https://nexus.onap.org/content/sites/site/org/onap/msb/swagger-sdk/${project.version}</onap.nexus.javadocs-url>
     </properties>
