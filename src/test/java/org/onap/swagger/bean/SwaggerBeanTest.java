@@ -14,20 +14,23 @@
  * limitations under the License.
  */
 
-package org.onap.swagger.util;
+package org.onap.swagger.bean;
 
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-public class SwaggerTest {
+import io.swagger.jaxrs.config.BeanConfig;
+
+public class SwaggerBeanTest {
 
      @Test
     public void test() {
          try {
-         AdapterInfoUtil.getInstance();
+         new BeanConfigPostProcessor().postProcessBeforeInitialization(new BeanConfig(), BeanConfigPostProcessor.SWAGGER_BEAN_ID);
+         new BeanConfigPostProcessor().postProcessAfterInitialization(new BeanConfig(), BeanConfigPostProcessor.SWAGGER_BEAN_ID);
          } catch (Exception e) {
-             fail("failed to read swagger.properties");
+             fail("failed to post/pre process bean");
          }
     }
 }

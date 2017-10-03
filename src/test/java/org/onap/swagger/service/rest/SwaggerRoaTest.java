@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package org.onap.swagger.util;
+package org.onap.swagger.service.rest;
 
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-public class SwaggerTest {
+public class SwaggerRoaTest {
 
      @Test
     public void test() {
          try {
-         AdapterInfoUtil.getInstance();
+         new SwaggerRoa().apidoc();
          } catch (Exception e) {
-             fail("failed to read swagger.properties");
+             fail("failed to read swagger.json");
          }
     }
 }

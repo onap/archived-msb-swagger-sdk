@@ -33,7 +33,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
  */
 public class BeanConfigPostProcessor implements BeanPostProcessor {
 
-    private static final String SWAGGER_BEAN_ID = "swaggerConfig";
+    public static final String SWAGGER_BEAN_ID = "swaggerConfig";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BeanConfigPostProcessor.class);
 
