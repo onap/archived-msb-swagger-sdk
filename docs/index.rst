@@ -47,4 +47,10 @@ Build-time feature
 
 MSB is already supported with this feature.
 
+Run-time feature
+----------------
+
+* Provides an RESP API controller for reporting swagger.json at pre-defined URI. And it helps to maintain the same URI across different servicse in ONAP, by making use of it. Also it helps to generate swagger.json at run-time if a given service is already annotated with swagger annotations.
+
+* It does support only for java based swagger enabled RESTful services.
 
