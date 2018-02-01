@@ -1,0 +1,14 @@
+{
+  "serviceName": "sdnovpc",
+  "version": "v1",
+  "url": "/openoapi/sdnovpc/v1",
+  "protocol": "REST",
+  "visualRange": "1",
+  "nodes": [
+    {
+      "ip": "localhost",
+      "port": "8518",
+      "ttl": 0
+    }
+  ]
+}
