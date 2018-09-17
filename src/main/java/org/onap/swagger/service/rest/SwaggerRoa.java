@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Huawei Technologies Co., Ltd.
+ * Copyright 2017-18 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ import javax.ws.rs.core.MediaType;
 public class SwaggerRoa {
 
     /**
-     * API doc.
+     * Swagger API doc.
      *
      * @return string
      * @throws IOException exception
