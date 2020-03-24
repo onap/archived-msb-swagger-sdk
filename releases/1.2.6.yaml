@@ -1,0 +1,5 @@
+---
+distribution_type: maven
+log_dir: msb-swagger-sdk-maven-stage-master/266/
+project: msb-swagger-sdk
+version: 1.2.6
