@@ -14,7 +14,7 @@ Swagger helps on following aspects:
 
 * Define REST API based on OAS standard, as swagger.json
 * Auto generate the REST service code, using swagger.json with swagger annotations.
-* Auto generate the client sdk code, using swagger.json in different language
+* Auto generate the client SDK code, using swagger.json in different language
 * Provides readable REST API document using swagger.json
 
 And for implementing mirco-services, swagger is being an default technology.
